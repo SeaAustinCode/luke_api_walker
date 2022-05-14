@@ -11,7 +11,8 @@ function App() {
       <Form />
       <hr />
       <Routes>
-        <Route path={"/people/:input"} element={<People />}/> 
+        <Route path={"/people/:input"} element={<People />}/> {/* only need curly braces if Im using variable name  */}
+
         <Route path={"/"} element={<People />}/> 
           
         <Route path={"/planets/:input"} element={<Planets />}/>

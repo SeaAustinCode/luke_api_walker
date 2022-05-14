@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 const Form = (props) => {
 
-  const [category, setCategory] = useState("people") // entering in people/planet
+  const [category, setCategory] = useState("people") // <----- I was not passing anything into here "" and it was causing me big problems 0.0.0.1 error etc why? 
   const [id, setId] = useState(1) // entering in a number 
 
   // using navigate to programmatically go to another ROUTE 
@@ -21,7 +21,7 @@ const Form = (props) => {
   return (
     <form onSubmit={submitHandler}>
       <label>Search for: </label>
-      <select onChange={(e) => { setCategory(e.target.value) }} value={category}>
+      <select onChange={(e) => setCategory(e.target.value) } value={category}>
         <option value={"people"}>People</option>
         <option value={"planets"}>Planets</option>
       </select>

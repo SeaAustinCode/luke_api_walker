@@ -7,11 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import Error from './Error';
 
 
+// NOT DRY CODE === WAS UNSURE HOW TO INCLUDE PLANETS AND PEOPLE IN THE SAME COMPONENT AND USE A VARIABLE TO SWITCH BETWEEN THE TWO 
+
 const People = (props) => {
 
     const { input } = useParams()
 
-    const [responseData, setResponseData] = useState("");
+    const [responseData, setResponseData] = useState({}); // empty 
 
     const [errorResponse, setErrorResponse] = useState(false)
 
@@ -21,12 +23,13 @@ const People = (props) => {
         axios.get(`https://swapi.dev/api/people/${input}`)
             // .then(response => response.json())
             .then(response => {
+                console.log(response.data)
                 setResponseData(response.data);
             })
             .catch(error => {
                 console.log(error)
-                navigate("/error")
-                setErrorResponse(true)
+                // setErrorResponse(true)
+                navigate("/error") //matches the route in app.js and renders the element <Error />
             });
     }, [input]); //second option input, retriggers useEffect 
 
